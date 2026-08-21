@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D09D5D3E-264B-454F-A8E1-4E1B1D539450}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Vistas</RootNamespace>
+    <AssemblyName>Vistas</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmCierreCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCierreCaja.Designer.cs">
+      <DependentUpon>frmCierreCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOpcionesProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOpcionesProducto.Designer.cs">
+      <DependentUpon>frmOpcionesProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPersonalizarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPersonalizarProducto.Designer.cs">
+      <DependentUpon>frmPersonalizarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmToastPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmToastPago.Designer.cs">
+      <DependentUpon>frmToastPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestMercadoPago.cs" />
+    <Compile Include="Usuarios\administrador\Control Diario\formularioControlDiario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\administrador\Control Diario\formularioControlDiario.Designer.cs">
+      <DependentUpon>formularioControlDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\administrador\formularioPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\administrador\formularioPrincipal.Designer.cs">
+      <DependentUpon>formularioPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\administrador\Menus\formularioMenus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\administrador\Menus\formularioMenus.Designer.cs">
+      <DependentUpon>formularioMenus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\administrador\Nueva Venta\formularioNuevaVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\administrador\Nueva Venta\formularioNuevaVenta.Designer.cs">
+      <DependentUpon>formularioNuevaVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\administrador\Vendedores\formularioVendedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\administrador\Vendedores\formularioVendedores.Designer.cs">
+      <DependentUpon>formularioVendedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\vendedor\formularioMenusVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\vendedor\formularioMenusVendedor.Designer.cs">
+      <DependentUpon>formularioMenusVendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\vendedor\formularioVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\vendedor\formularioVendedor.Designer.cs">
+      <DependentUpon>formularioVendedor.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmCierreCaja.resx">
+      <DependentUpon>frmCierreCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOpcionesProducto.resx">
+      <DependentUpon>frmOpcionesProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPersonalizarProducto.resx">
+      <DependentUpon>frmPersonalizarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Usuarios\administrador\Control Diario\formularioControlDiario.resx">
+      <DependentUpon>formularioControlDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\administrador\formularioPrincipal.resx">
+      <DependentUpon>formularioPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\administrador\Menus\formularioMenus.resx">
+      <DependentUpon>formularioMenus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\administrador\Nueva Venta\formularioNuevaVenta.resx">
+      <DependentUpon>formularioNuevaVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\administrador\Vendedores\formularioVendedores.resx">
+      <DependentUpon>formularioVendedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\vendedor\formularioMenusVendedor.resx">
+      <DependentUpon>formularioMenusVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\vendedor\formularioVendedor.resx">
+      <DependentUpon>formularioVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{0dedfb1d-2ae5-4ede-82ba-a8da78c47324}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{60f17a51-c3c4-4f36-b109-1c13279dcfab}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

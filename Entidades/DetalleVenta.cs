@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Entidades
+{
+    public class DetalleVenta
+    {
+        private int Id_Detalle_D;
+        private int Id_Venta_D;
+        private int Id_Producto_D;
+        private int Cantidad_D;
+        private decimal PrecioUnitario_D;
+        private decimal Subtotal_D;
+
+        public DetalleVenta() { }
+
+        public int getId_Detalle_D() { return Id_Detalle_D; }
+        public void setId_Detalle_D(int id) { Id_Detalle_D = id; }
+
+        public int getId_Venta_D() { return Id_Venta_D; }
+        public void setId_Venta_D(int id) { Id_Venta_D = id; }
+
+        public int getId_Producto_D() { return Id_Producto_D; }
+        public void setId_Producto_D(int id) { Id_Producto_D = id; }
+
+        public int getCantidad_D() { return Cantidad_D; }
+        public void setCantidad_D(int cantidad) { Cantidad_D = cantidad; }
+
+        public decimal getPrecioUnitario_D() { return PrecioUnitario_D; }
+        public void setPrecioUnitario_D(decimal precio) { PrecioUnitario_D = precio; }
+
+        public decimal getSubtotal_D() { return Subtotal_D; }
+        public void setSubtotal_D(decimal subtotal) { Subtotal_D = subtotal; }
+    }
+}
