@@ -1,54 +1,67 @@
-# 🍔 Tony's Food — Sistema de Gestión para Rotisería
+# Tony's Food | Sistema de Gestión para Rotisería
 
-Sistema de gestión desarrollado para una rotisería, pensado para centralizar las operaciones del negocio, simplificar las tareas diarias y llevar un mejor control de las ventas, los productos y el stock.
+Tony's Food es una aplicación de escritorio desarrollada en C# con Windows Forms y SQL Server, diseñada para facilitar la administración y las operaciones diarias de una rotisería.
 
-## 📌 Sobre el proyecto
+El sistema permite gestionar usuarios, vendedores, productos, ventas y stock desde una misma aplicación. Cuenta con un inicio de sesión y distintas opciones de gestión para organizar las tareas del negocio y mantener la información centralizada.
 
-**Tony's Food** es una aplicación de escritorio desarrollada en C# con Windows Forms y SQL Server. Cuenta con funcionalidades orientadas a la administración del negocio y al trabajo diario de los vendedores.
+## 📸 Funcionalidades del sistema
 
-El objetivo es facilitar la gestión de la rotisería mediante una aplicación que reúna las principales operaciones en un solo lugar.
+### 🔐 Inicio de sesión
 
-## ✨ Funcionalidades
+El sistema cuenta con un formulario de login que permite a los usuarios ingresar utilizando sus credenciales. Este acceso sirve como punto de entrada a la aplicación y permite diferenciar las opciones disponibles según el perfil del usuario.
 
-- 🛒 **Gestión de ventas:** registro y administración de las ventas realizadas.
-- 🍕 **Productos y categorías:** organización de los productos disponibles.
-- 👥 **Gestión de usuarios y vendedores:** administración de los usuarios del sistema.
-- 📦 **Control de stock:** seguimiento de insumos y movimientos de stock.
-- 🧾 **Comprobantes:** generación e impresión de tickets de venta.
-- 📊 **Reportes:** consulta de información para el seguimiento del negocio.
-- ⚙️ **Personalización de productos:** selección y gestión de opciones y extras.
-- 🔐 **Perfiles de usuario:** funcionalidades diferenciadas para administración y ventas.
+![Inicio de sesión](imagenes/login.png)
+
+### 🏠 Menú principal del administrador
+
+El menú del administrador funciona como el centro de navegación del sistema. Desde este formulario se puede acceder a las distintas herramientas de gestión, como vendedores, ventas, control diario y stock, facilitando el acceso a las tareas administrativas del negocio.
+
+![Menú principal del administrador](imagenes/menu-administrador.png)
+
+### 👥 Gestión de vendedores
+
+Este formulario está destinado a la administración de los vendedores que utilizan el sistema. Permite registrar nuevos vendedores y gestionar la información de los usuarios asociados a esta función. Su objetivo es mantener organizados los datos del personal y facilitar la administración de los accesos al sistema.
+
+![Formulario de vendedores](imagenes/vendedores.png)
+
+### 📊 Control diario
+
+El formulario de control diario permite consultar y supervisar la actividad del negocio durante la jornada. Su finalidad es facilitar el seguimiento de las operaciones realizadas y disponer de información útil para revisar el movimiento diario de la rotisería.
+
+![Control diario](imagenes/control-diario.png)
+
+### 🧾 Nueva venta
+
+Este formulario se utiliza para registrar las ventas realizadas en la rotisería. Permite gestionar los productos que forman parte de una operación y registrar la venta correspondiente, ayudando a organizar las transacciones y mantener un seguimiento de las ventas del negocio.
+
+![Formulario de nueva venta](imagenes/nueva-venta.png)
+
+### 📦 Gestión de stock
+
+El formulario de stock permite administrar y consultar la información de las existencias del negocio. Está orientado al seguimiento de los insumos y productos utilizados en la rotisería, ayudando a controlar las cantidades disponibles y a mantener actualizada la información relacionada con el inventario.
+
+![Formulario de stock](imagenes/stock.png)
 
 ## 🛠️ Tecnologías utilizadas
 
-| Tecnología | Uso |
-|---|---|
-| C# | Lenguaje de programación |
-| Windows Forms | Desarrollo de la interfaz de escritorio |
-| SQL Server | Base de datos |
-| ADO.NET | Acceso a datos |
-| Visual Studio | Entorno de desarrollo |
-| Git y GitHub | Control de versiones |
+- **C#** — Lenguaje de programación.
+- **Windows Forms** — Desarrollo de la interfaz gráfica.
+- **SQL Server** — Base de datos para almacenar la información del sistema.
+- **ADO.NET** — Acceso e interacción con la base de datos.
+- **Visual Studio** — Entorno de desarrollo.
+- **Git y GitHub** — Control de versiones y gestión del repositorio.
 
-## 🏗️ Estructura del proyecto
+## 🏗️ Arquitectura del proyecto
 
-El sistema está organizado en diferentes capas para separar las responsabilidades y facilitar el mantenimiento del código.
+El proyecto está organizado en capas para separar las responsabilidades y facilitar el mantenimiento del código.
 
-- **Datos:** acceso a la base de datos y operaciones de persistencia.
-- **Entidades:** clases que representan los objetos y datos del sistema.
-- **Negocio:** lógica y reglas de la aplicación.
-- **Vistas:** formularios e interfaces con las que interactúa el usuario.
+- **Vistas:** contienen los formularios y las interfaces con las que interactúa el usuario.
+- **Negocio:** concentra la lógica y las reglas de funcionamiento del sistema.
+- **Datos:** gestiona las operaciones de acceso a la base de datos.
+- **Entidades:** contiene las clases que representan los datos utilizados por la aplicación.
 
-Esta organización permite mantener el código más ordenado y separar la interfaz, la lógica del negocio y el acceso a los datos.
+## 🎯 Objetivo del proyecto
 
+Desarrollar un sistema de gestión para una rotisería aplicando conocimientos de programación orientada a objetos, interfaces gráficas, bases de datos relacionales y separación de responsabilidades en capas.
 
-
-## 🎯 Objetivo del desarrollo
-
-Este proyecto busca aplicar conocimientos de programación orientada a objetos, acceso a datos, bases de datos relacionales y desarrollo de aplicaciones de escritorio, mediante una solución orientada a una necesidad real de gestión comercial.
-
-## 👨‍💻 Autoría
-
-Proyecto de desarrollo de software realizado como práctica de programación y aplicación de conocimientos técnicos.
-
-**Tony's Food — Gestión más simple para tu rotisería.** 🍟
+El proyecto integra distintas funcionalidades en una aplicación de escritorio, buscando simplificar las tareas administrativas y mejorar la organización de la información del negocio.
