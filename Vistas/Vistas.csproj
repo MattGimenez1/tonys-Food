@@ -110,6 +110,12 @@
     <Compile Include="Usuarios\administrador\Nueva Venta\formularioNuevaVenta.Designer.cs">
       <DependentUpon>formularioNuevaVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\administrador\Stock\formularioStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\administrador\Stock\formularioStock.Designer.cs">
+      <DependentUpon>formularioStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios\administrador\Vendedores\formularioVendedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\administrador\Nueva Venta\formularioNuevaVenta.resx">
       <DependentUpon>formularioNuevaVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\administrador\Stock\formularioStock.resx">
+      <DependentUpon>formularioStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\administrador\Vendedores\formularioVendedores.resx">
       <DependentUpon>formularioVendedores.cs</DependentUpon>

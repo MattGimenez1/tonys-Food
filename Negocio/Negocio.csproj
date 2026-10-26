@@ -43,11 +43,16 @@
   <ItemGroup>
     <Compile Include="NegocioCategoria.cs" />
     <Compile Include="NegocioCierreCaja.cs" />
+    <Compile Include="NegocioInsumos.cs" />
+    <Compile Include="NegocioMovimientoStock.cs" />
     <Compile Include="NegocioOpciones.cs" />
+    <Compile Include="NegocioReporteStock.cs" />
+    <Compile Include="NegocioStockVenta.cs" />
     <Compile Include="NegocioUsuario.cs" />
     <Compile Include="NegocioProductos.cs" />
     <Compile Include="NegocioVendedor.cs" />
     <Compile Include="NegocioVenta.cs" />
+    <Compile Include="NegocioVinculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@ using Negocio;
 using System.Drawing.Printing;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace Vistas.Usuarios.administrador.Nueva_Venta
 {
@@ -30,6 +31,8 @@ namespace Vistas.Usuarios.administrador.Nueva_Venta
             public string Nombre;
             public decimal Precio;
             public int Cantidad;
+            public int? IdTamano;
+            public List<ExtraElegido> Extras = new List<ExtraElegido>();
             public decimal Subtotal => Precio * Cantidad;
         }
 
@@ -180,7 +183,9 @@ namespace Vistas.Usuarios.administrador.Nueva_Venta
                                 ? ""
                                 : " (" + ventana.ResumenPersonalizacion + ")"),
                     Precio = ventana.PrecioFinal,
-                    Cantidad = ventana.Cantidad
+                    Cantidad = ventana.Cantidad,
+                    IdTamano = ventana.IdTamanoElegido,
+                    Extras = ventana.ExtrasElegidos
                 };
             }
 
@@ -255,6 +260,33 @@ namespace Vistas.Usuarios.administrador.Nueva_Venta
 
         // ========== TEXTOS PARA IMPRIMIR ==========
 
+        private string AjustarTexto(string texto, int ancho = 32)
+        {
+            if (string.IsNullOrWhiteSpace(texto))
+                return "";
+
+            StringBuilder resultado = new StringBuilder();
+
+            while (texto.Length > ancho)
+            {
+                int posicionCorte = texto.LastIndexOf(' ', ancho);
+
+                if (posicionCorte <= 0)
+                    posicionCorte = ancho;
+
+                resultado.AppendLine(
+                    texto.Substring(0, posicionCorte).Trim());
+
+                texto = texto.Substring(posicionCorte).Trim();
+            }
+
+            if (texto.Length > 0)
+                resultado.AppendLine(texto);
+
+            return resultado.ToString();
+        }
+
+
         private string GenerarTextoComanda(int idVenta)
         {
             string texto = "";
@@ -265,15 +297,41 @@ namespace Vistas.Usuarios.administrador.Nueva_Venta
             texto += "------------------------\n";
 
             foreach (ItemPedido item in carrito.Values)
-                texto += item.Cantidad + "x " + item.Nombre + "\n";
+            {
+                string nombreProducto = item.Nombre;
+                string aclaracion = "";
+
+                int idxParentesis = nombreProducto.IndexOf(" (");
+
+                if (idxParentesis >= 0)
+                {
+                    aclaracion = nombreProducto
+                        .Substring(idxParentesis + 2)
+                        .TrimEnd(')');
+
+                    nombreProducto = nombreProducto
+                        .Substring(0, idxParentesis);
+                }
+
+                // Producto
+                texto += AjustarTexto(
+                    item.Cantidad + "x " + nombreProducto,
+                    32);
+
+                // Adicionales / aclaración
+                if (!string.IsNullOrEmpty(aclaracion))
+                {
+                    texto += AjustarTexto(
+                        "   >> " + aclaracion,
+                        32);
+                }
+            }
 
             texto += "------------------------\n";
 
-            // Pequeño margen final para cocina
-            texto += "\n\n";
-
             return texto;
         }
+
 
         private string GenerarTextoTicketCliente(
             int idVenta,
@@ -285,30 +343,71 @@ namespace Vistas.Usuarios.administrador.Nueva_Venta
             texto += "===== TONY'S FOOD =====\n";
             texto += "Ticket N°: " + idVenta + "\n";
             texto += DateTime.Now.ToString("dd/MM/yyyy HH:mm") + "\n";
-            texto += "Atendió: " +
-                     usuarioActual.getNombreUsuario_U() +
-                     "\n";
+
+            texto += AjustarTexto(
+                "Atendió: " +
+                usuarioActual.getNombreUsuario_U(),
+                32);
+
             texto += "------------------------\n";
 
             foreach (ItemPedido item in carrito.Values)
             {
-                texto += item.Cantidad +
-                         "x " +
-                         item.Nombre.PadRight(15) +
-                         " $" +
-                         item.Subtotal.ToString("N0") +
-                         "\n";
+                string nombreProducto = item.Nombre;
+                string aclaracion = "";
+
+                int idxParentesis = nombreProducto.IndexOf(" (");
+
+                if (idxParentesis >= 0)
+                {
+                    aclaracion = nombreProducto
+                        .Substring(idxParentesis + 2)
+                        .TrimEnd(')');
+
+                    nombreProducto = nombreProducto
+                        .Substring(0, idxParentesis);
+                }
+
+                // Producto + precio
+                string lineaProducto =
+                    item.Cantidad + "x " +
+                    nombreProducto.PadRight(15) +
+                    " $" +
+                    item.Subtotal.ToString("N0");
+
+                texto += AjustarTexto(
+                    lineaProducto,
+                    32);
+
+                // Adicionales / aclaración
+                if (!string.IsNullOrEmpty(aclaracion))
+                {
+                    texto += AjustarTexto(
+                        "   >> " + aclaracion,
+                        32);
+                }
             }
 
             texto += "------------------------\n";
-            texto += "TOTAL: $" + total.ToString("N0") + "\n";
-            texto += "Forma de pago: " + formaPago + "\n";
+
+            texto += AjustarTexto(
+                "TOTAL: $" + total.ToString("N0"),
+                32);
+
+            texto += AjustarTexto(
+                "Forma de pago: " + formaPago,
+                32);
+
             texto += "========================\n";
-            texto += "Comprobante no válido como factura\n";
-            texto += "     ¡Gracias por su compra!\n";
+
+            // Texto corto para que no se corte
+            texto += "No válido como factura\n";
+
+            texto += "¡Gracias por su compra!\n";
 
             return texto;
         }
+
 
         // ========== TEXTOS PARA REIMPRIMIR ==========
 
@@ -325,18 +424,48 @@ namespace Vistas.Usuarios.administrador.Nueva_Venta
             texto += "------------------------\n";
 
             foreach (DataRow fila in detalle.Rows)
-                texto += fila["Cantidad"] +
-                         "x " +
-                         fila["Producto"] +
-                         "\n";
+            {
+                string nombreProducto =
+                    fila["Producto"].ToString();
+
+                string aclaracion = "";
+                int idxParentesis =
+                    nombreProducto.IndexOf(" (");
+
+                if (idxParentesis >= 0)
+                {
+                    aclaracion = nombreProducto
+                        .Substring(idxParentesis + 2)
+                        .TrimEnd(')');
+
+                    nombreProducto = nombreProducto
+                        .Substring(0, idxParentesis);
+                }
+
+                // Producto
+                texto += AjustarTexto(
+                    fila["Cantidad"] +
+                    "x " +
+                    nombreProducto,
+                    32);
+
+                // Adicionales
+                if (!string.IsNullOrEmpty(aclaracion))
+                {
+                    texto += AjustarTexto(
+                        "   >> " + aclaracion,
+                        32);
+                }
+            }
 
             texto += "------------------------\n";
 
-            // Pequeño margen final para cocina
+            // Margen final para cocina
             texto += "\n\n";
 
             return texto;
         }
+
 
         private string GenerarTextoTicketClienteDesdeDetalle(
             int idVenta,
@@ -354,24 +483,64 @@ namespace Vistas.Usuarios.administrador.Nueva_Venta
 
             foreach (DataRow fila in detalle.Rows)
             {
-                string nombre = fila["Producto"].ToString();
-                int cantidad = Convert.ToInt32(fila["Cantidad"]);
-                decimal subtotal = Convert.ToDecimal(fila["Subtotal"]);
+                string nombreProducto =
+                    fila["Producto"].ToString();
 
-                texto += cantidad +
-                         "x " +
-                         nombre.PadRight(15) +
-                         " $" +
-                         subtotal.ToString("N0") +
-                         "\n";
+                int cantidad =
+                    Convert.ToInt32(fila["Cantidad"]);
+
+                decimal subtotal =
+                    Convert.ToDecimal(fila["Subtotal"]);
+
+                string aclaracion = "";
+                int idxParentesis =
+                    nombreProducto.IndexOf(" (");
+
+                if (idxParentesis >= 0)
+                {
+                    aclaracion = nombreProducto
+                        .Substring(idxParentesis + 2)
+                        .TrimEnd(')');
+
+                    nombreProducto = nombreProducto
+                        .Substring(0, idxParentesis);
+                }
+
+                // Producto + precio
+                string lineaProducto =
+                    cantidad + "x " +
+                    nombreProducto.PadRight(15) +
+                    " $" +
+                    subtotal.ToString("N0");
+
+                texto += AjustarTexto(
+                    lineaProducto,
+                    32);
+
+                // Adicionales
+                if (!string.IsNullOrEmpty(aclaracion))
+                {
+                    texto += AjustarTexto(
+                        "   >> " + aclaracion,
+                        32);
+                }
             }
 
             texto += "------------------------\n";
-            texto += "TOTAL: $" + total.ToString("N0") + "\n";
-            texto += "Forma de pago: " + formaPago + "\n";
+
+            texto += AjustarTexto(
+                "TOTAL: $" + total.ToString("N0"),
+                32);
+
+            texto += AjustarTexto(
+                "Forma de pago: " + formaPago,
+                32);
+
             texto += "========================\n";
-            texto += "Comprobante no válido como factura\n";
-            texto += "     ¡Gracias por su compra! (REIMPRESIÓN)\n";
+
+            texto += "No válido como factura\n";
+
+            texto += "¡Gracias por su compra! (REIMPRESIÓN)\n";
 
             return texto;
         }
@@ -459,6 +628,8 @@ namespace Vistas.Usuarios.administrador.Nueva_Venta
                 det.setCantidad_D(item.Cantidad);
                 det.setPrecioUnitario_D(item.Precio);
                 det.setSubtotal_D(item.Subtotal);
+                det.setId_Tamano_Sel(item.IdTamano);
+                det.setExtras_Sel(item.Extras);
 
                 detalles.Add(det);
             }
@@ -632,29 +803,25 @@ namespace Vistas.Usuarios.administrador.Nueva_Venta
 
         private async Task RevisarPagosNuevos()
         {
-            JToken pago =
-                await TestMercadoPago.ObtenerUltimoPagoRaw();
-
-            if (pago == null)
-                return;
-
-            long idPago =
-                (long)pago["id"];
-
-            if (idUltimoPagoVisto == 0)
+            try
             {
-                idUltimoPagoVisto = idPago;
-                return;
+                JToken pago = await TestMercadoPago.ObtenerUltimoPagoRaw();
+                if (pago == null) return;
+
+                long idPago = (long)pago["id"];
+                if (idUltimoPagoVisto == 0) { idUltimoPagoVisto = idPago; return; }
+
+                if (idPago != idUltimoPagoVisto)
+                {
+                    idUltimoPagoVisto = idPago;
+                    decimal monto = (decimal)pago["transaction_amount"];
+                    frmToastPago.Mostrar(monto);
+                }
             }
-
-            if (idPago != idUltimoPagoVisto)
+            catch (Exception)
             {
-                idUltimoPagoVisto = idPago;
-
-                decimal monto =
-                    (decimal)pago["transaction_amount"];
-
-                frmToastPago.Mostrar(monto);
+                // Sin internet u otro problema de conexión: lo ignoramos y seguimos con normalidad,
+                // no queremos que esto interrumpa al vendedor en medio de una venta
             }
         }
 

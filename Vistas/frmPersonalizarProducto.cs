@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Entidades;
 using Negocio;
 
 namespace Vistas
@@ -21,13 +22,18 @@ namespace Vistas
         public string ResumenPersonalizacion { get; private set; } = "";
         public int Cantidad { get; private set; } = 1;
 
+        // Qué se eligió (por Id), para poder descontar el stock al cobrar
+        public int? IdTamanoElegido { get; private set; } = null;
+        public List<ExtraElegido> ExtrasElegidos { get; private set; } = new List<ExtraElegido>();
+
         // Controles dinámicos que armamos en tiempo de ejecución
         private RadioButton[] radiosTamano;
         private decimal[] preciosTamano;
         private string[] nombresTamano;
+        private int[] idsTamano;
 
-        private List<(string Nombre, decimal Precio, NumericUpDown Cantidad)> extras =
-            new List<(string, decimal, NumericUpDown)>();
+        private List<(int Id, string Nombre, decimal Precio, NumericUpDown Cantidad)> extras =
+            new List<(int, string, decimal, NumericUpDown)>();
 
         private List<(string Nombre, CheckBox Check)> ingredientes =
             new List<(string, CheckBox)>();
@@ -62,6 +68,7 @@ namespace Vistas
                 radiosTamano = new RadioButton[tablaTamanos.Rows.Count];
                 preciosTamano = new decimal[tablaTamanos.Rows.Count];
                 nombresTamano = new string[tablaTamanos.Rows.Count];
+                idsTamano = new int[tablaTamanos.Rows.Count];
 
                 for (int i = 0; i < tablaTamanos.Rows.Count; i++)
                 {
@@ -69,6 +76,7 @@ namespace Vistas
                     decimal precio = Convert.ToDecimal(tablaTamanos.Rows[i]["Precio"]);
 
                     nombresTamano[i] = nombre;
+                    idsTamano[i] = Convert.ToInt32(tablaTamanos.Rows[i]["Id"]);
                     preciosTamano[i] = precio;
 
                     RadioButton rb = new RadioButton
@@ -96,6 +104,7 @@ namespace Vistas
 
                 foreach (DataRow fila in tablaExtras.Rows)
                 {
+                    int idExtra = Convert.ToInt32(fila["Id"]);
                     string nombre = fila["Nombre"].ToString();
                     decimal precio = Convert.ToDecimal(fila["Precio"]);
 
@@ -113,7 +122,7 @@ namespace Vistas
 
                     pnl_Contenido.Controls.Add(lbl);
                     pnl_Contenido.Controls.Add(numeric);
-                    extras.Add((nombre, precio, numeric));
+                    extras.Add((idExtra, nombre, precio, numeric));
                     y += 30;
                 }
                 y += 10;
@@ -176,6 +185,8 @@ namespace Vistas
         {
             decimal total = precioBase;
             string resumen = "";
+            int? tamanoElegido = null;
+            List<ExtraElegido> extrasElegidos = new List<ExtraElegido>();
 
             if (radiosTamano != null)
             {
@@ -185,6 +196,7 @@ namespace Vistas
                     {
                         total = preciosTamano[i];
                         resumen += nombresTamano[i] + ", ";
+                        tamanoElegido = idsTamano[i];
                         break;
                     }
                 }
@@ -196,6 +208,7 @@ namespace Vistas
                 {
                     total += extra.Precio * extra.Cantidad.Value;
                     resumen += "+" + extra.Cantidad.Value + " " + extra.Nombre + ", ";
+                    extrasElegidos.Add(new ExtraElegido(extra.Id, (int)extra.Cantidad.Value));
                 }
             }
 
@@ -219,6 +232,8 @@ namespace Vistas
             PrecioFinal = total;
             ResumenPersonalizacion = resumen;
             Cantidad = (int)nud_Cantidad.Value;
+            IdTamanoElegido = tamanoElegido;
+            ExtrasElegidos = extrasElegidos;
             Confirmado = true;
             this.Close();
         }

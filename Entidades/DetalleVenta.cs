@@ -15,6 +15,10 @@ namespace Entidades
         private decimal PrecioUnitario_D;
         private decimal Subtotal_D;
 
+        // Solo en memoria (no se guardan en DetalleVentas): sirven para calcular el descuento de stock
+        private int? Id_Tamano_Sel;
+        private List<ExtraElegido> Extras_Sel = new List<ExtraElegido>();
+
         public DetalleVenta() { }
 
         public int getId_Detalle_D() { return Id_Detalle_D; }
@@ -34,5 +38,14 @@ namespace Entidades
 
         public decimal getSubtotal_D() { return Subtotal_D; }
         public void setSubtotal_D(decimal subtotal) { Subtotal_D = subtotal; }
+
+        public int? getId_Tamano_Sel() { return Id_Tamano_Sel; }
+        public void setId_Tamano_Sel(int? id) { Id_Tamano_Sel = id; }
+
+        public List<ExtraElegido> getExtras_Sel() { return Extras_Sel; }
+        public void setExtras_Sel(List<ExtraElegido> extras)
+        {
+            Extras_Sel = extras ?? new List<ExtraElegido>();
+        }
     }
 }

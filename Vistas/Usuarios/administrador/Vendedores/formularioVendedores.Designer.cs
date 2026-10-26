@@ -69,6 +69,7 @@
             this.pnl_Arriba.Name = "pnl_Arriba";
             this.pnl_Arriba.Size = new System.Drawing.Size(1920, 100);
             this.pnl_Arriba.TabIndex = 2;
+            this.pnl_Arriba.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Arriba_Paint);
             // 
             // btn_volver
             // 
@@ -91,6 +92,7 @@
             this.lbl_Usuario.Size = new System.Drawing.Size(67, 20);
             this.lbl_Usuario.TabIndex = 0;
             this.lbl_Usuario.Text = "Usuario:";
+            this.lbl_Usuario.Click += new System.EventHandler(this.lbl_Usuario_Click);
             // 
             // pnl_Izquierdo
             // 
@@ -102,6 +104,7 @@
             this.pnl_Izquierdo.Name = "pnl_Izquierdo";
             this.pnl_Izquierdo.Size = new System.Drawing.Size(314, 980);
             this.pnl_Izquierdo.TabIndex = 1;
+            this.pnl_Izquierdo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Izquierdo_Paint);
             // 
             // btn_Vendedores
             // 
@@ -115,6 +118,7 @@
             this.btn_Vendedores.TabIndex = 3;
             this.btn_Vendedores.Text = "Vendedores";
             this.btn_Vendedores.UseVisualStyleBackColor = false;
+            this.btn_Vendedores.Click += new System.EventHandler(this.btn_Vendedores_Click_1);
             // 
             // pnl_Principal
             // 
@@ -127,6 +131,7 @@
             this.pnl_Principal.Name = "pnl_Principal";
             this.pnl_Principal.Size = new System.Drawing.Size(1606, 980);
             this.pnl_Principal.TabIndex = 0;
+            this.pnl_Principal.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Principal_Paint);
             // 
             // dgv_Vendedor
             // 
@@ -138,6 +143,7 @@
             this.dgv_Vendedor.RowTemplate.Height = 24;
             this.dgv_Vendedor.Size = new System.Drawing.Size(1278, 938);
             this.dgv_Vendedor.TabIndex = 2;
+            this.dgv_Vendedor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Vendedor_CellContentClick);
             // 
             // pnl_Derecha
             // 
@@ -161,6 +167,7 @@
             this.pnl_Derecha.Name = "pnl_Derecha";
             this.pnl_Derecha.Size = new System.Drawing.Size(288, 980);
             this.pnl_Derecha.TabIndex = 1;
+            this.pnl_Derecha.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Derecha_Paint);
             // 
             // lbl_Fecha
             // 
@@ -170,6 +177,7 @@
             this.lbl_Fecha.Size = new System.Drawing.Size(45, 16);
             this.lbl_Fecha.TabIndex = 4;
             this.lbl_Fecha.Text = "Fecha";
+            this.lbl_Fecha.Click += new System.EventHandler(this.lbl_Fecha_Click);
             // 
             // btn_DarDeAlta
             // 
@@ -224,6 +232,7 @@
             this.txt_Dni.Name = "txt_Dni";
             this.txt_Dni.Size = new System.Drawing.Size(256, 32);
             this.txt_Dni.TabIndex = 16;
+            this.txt_Dni.TextChanged += new System.EventHandler(this.txt_Dni_TextChanged);
             // 
             // lbl_Dni
             // 
@@ -234,6 +243,7 @@
             this.lbl_Dni.Size = new System.Drawing.Size(30, 17);
             this.lbl_Dni.TabIndex = 15;
             this.lbl_Dni.Text = "DNI";
+            this.lbl_Dni.Click += new System.EventHandler(this.lbl_Dni_Click);
             // 
             // txt_Usuario
             // 
@@ -244,6 +254,7 @@
             this.txt_Usuario.Name = "txt_Usuario";
             this.txt_Usuario.Size = new System.Drawing.Size(256, 32);
             this.txt_Usuario.TabIndex = 14;
+            this.txt_Usuario.TextChanged += new System.EventHandler(this.txt_Usuario_TextChanged);
             // 
             // lbl_UsuarioVendedor
             // 
@@ -254,6 +265,7 @@
             this.lbl_UsuarioVendedor.Size = new System.Drawing.Size(53, 17);
             this.lbl_UsuarioVendedor.TabIndex = 13;
             this.lbl_UsuarioVendedor.Text = "Usuario";
+            this.lbl_UsuarioVendedor.Click += new System.EventHandler(this.lbl_UsuarioVendedor_Click);
             // 
             // txt_Apellido
             // 
@@ -264,6 +276,7 @@
             this.txt_Apellido.Name = "txt_Apellido";
             this.txt_Apellido.Size = new System.Drawing.Size(256, 32);
             this.txt_Apellido.TabIndex = 12;
+            this.txt_Apellido.TextChanged += new System.EventHandler(this.txt_Apellido_TextChanged);
             // 
             // lbl_Apellido
             // 
@@ -274,6 +287,7 @@
             this.lbl_Apellido.Size = new System.Drawing.Size(56, 17);
             this.lbl_Apellido.TabIndex = 11;
             this.lbl_Apellido.Text = "Apellido";
+            this.lbl_Apellido.Click += new System.EventHandler(this.lbl_Apellido_Click);
             // 
             // txt_Nombre
             // 
@@ -284,6 +298,7 @@
             this.txt_Nombre.Name = "txt_Nombre";
             this.txt_Nombre.Size = new System.Drawing.Size(256, 32);
             this.txt_Nombre.TabIndex = 10;
+            this.txt_Nombre.TextChanged += new System.EventHandler(this.txt_Nombre_TextChanged);
             // 
             // lbl_Nombre
             // 
@@ -294,6 +309,7 @@
             this.lbl_Nombre.Size = new System.Drawing.Size(57, 17);
             this.lbl_Nombre.TabIndex = 10;
             this.lbl_Nombre.Text = "Nombre";
+            this.lbl_Nombre.Click += new System.EventHandler(this.lbl_Nombre_Click);
             // 
             // lbl_NuevoVendedor
             // 
@@ -304,6 +320,7 @@
             this.lbl_NuevoVendedor.Size = new System.Drawing.Size(232, 37);
             this.lbl_NuevoVendedor.TabIndex = 2;
             this.lbl_NuevoVendedor.Text = "Nuevo Vendedor";
+            this.lbl_NuevoVendedor.Click += new System.EventHandler(this.lbl_NuevoVendedor_Click);
             // 
             // lbl_TocarFila
             // 
@@ -314,6 +331,7 @@
             this.lbl_TocarFila.Size = new System.Drawing.Size(230, 25);
             this.lbl_TocarFila.TabIndex = 0;
             this.lbl_TocarFila.Text = "Toca una fila para editarla";
+            this.lbl_TocarFila.Click += new System.EventHandler(this.lbl_TocarFila_Click);
             // 
             // formularioVendedores
             // 

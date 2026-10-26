@@ -32,6 +32,7 @@
             this.btn_CerrarSession = new System.Windows.Forms.Button();
             this.lbl_Usuario = new System.Windows.Forms.Label();
             this.pnl_Botones = new System.Windows.Forms.Panel();
+            this.btn_Stock = new System.Windows.Forms.Button();
             this.btn_Vendedores = new System.Windows.Forms.Button();
             this.btn_ControlDiario = new System.Windows.Forms.Button();
             this.btn_Menus = new System.Windows.Forms.Button();
@@ -82,6 +83,7 @@
             this.pnl_Botones.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_Botones.BackColor = System.Drawing.Color.White;
             this.pnl_Botones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_Botones.Controls.Add(this.btn_Stock);
             this.pnl_Botones.Controls.Add(this.btn_Vendedores);
             this.pnl_Botones.Controls.Add(this.btn_ControlDiario);
             this.pnl_Botones.Controls.Add(this.btn_Menus);
@@ -90,6 +92,20 @@
             this.pnl_Botones.Name = "pnl_Botones";
             this.pnl_Botones.Size = new System.Drawing.Size(463, 568);
             this.pnl_Botones.TabIndex = 1;
+            // 
+            // btn_Stock
+            // 
+            this.btn_Stock.BackColor = System.Drawing.Color.DimGray;
+            this.btn_Stock.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Stock.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Stock.ForeColor = System.Drawing.Color.White;
+            this.btn_Stock.Location = new System.Drawing.Point(-1, 274);
+            this.btn_Stock.Name = "btn_Stock";
+            this.btn_Stock.Size = new System.Drawing.Size(463, 59);
+            this.btn_Stock.TabIndex = 4;
+            this.btn_Stock.Text = "Stock";
+            this.btn_Stock.UseVisualStyleBackColor = false;
+            this.btn_Stock.Click += new System.EventHandler(this.btn_Stock_Click);
             // 
             // btn_Vendedores
             // 
@@ -202,5 +218,6 @@
         private System.Windows.Forms.Button btn_CerrarSession;
         private System.Windows.Forms.Button btn_Vendedores;
         private System.Windows.Forms.Label lbl_Fecha;
+        private System.Windows.Forms.Button btn_Stock;
     }
 }

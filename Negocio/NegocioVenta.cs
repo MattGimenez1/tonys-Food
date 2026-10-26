@@ -15,7 +15,7 @@ namespace Negocio
             Venta ven = new Venta();
             ven.setTotal_V(total);
             ven.setId_Usuario_V(idUsuario);
-            ven.setFormaPago_V(formaPago); 
+            ven.setFormaPago_V(formaPago);
 
             int idVentaGenerada = dao.agregarVenta(ven);
 
@@ -27,6 +27,9 @@ namespace Negocio
                 det.setId_Venta_D(idVentaGenerada);
                 dao.agregarDetalleVenta(det);
             }
+
+            // Descuento automático de insumos (nunca hace fallar la venta)
+            new NegocioStockVenta().descontarVenta(idVentaGenerada, idUsuario, detalles);
 
             return idVentaGenerada;
         }

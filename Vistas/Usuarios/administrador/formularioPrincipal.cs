@@ -12,6 +12,7 @@ using Vistas.Usuarios.administrador.Control_Diario;
 using Vistas.Usuarios.administrador.Menus;
 using Vistas.Usuarios.administrador.Nueva_Venta;
 using Vistas.Usuarios.administrador.Vendedores;
+using Vistas.Usuarios.administrador.Stock;
 
 namespace Vistas.Usuarios.administrador
 {
@@ -67,6 +68,11 @@ namespace Vistas.Usuarios.administrador
             this.Close();
         }
 
-        
+        private void btn_Stock_Click(object sender, EventArgs e)
+        {
+            formularioStock stock = new formularioStock(usuarioActual);
+            stock.Show();
+            this.Close();
+        }
     }
 }

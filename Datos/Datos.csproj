@@ -44,11 +44,16 @@
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="DaoCategoria.cs" />
     <Compile Include="DaoCierreCaja.cs" />
+    <Compile Include="DaoInsumos.cs" />
+    <Compile Include="DaoMovimientoStock.cs" />
     <Compile Include="DaoOpciones.cs" />
     <Compile Include="DaoProducto.cs" />
+    <Compile Include="DaoReporteStock.cs" />
+    <Compile Include="DaoStockVenta.cs" />
     <Compile Include="DaoUsuario.cs" />
     <Compile Include="DaoVendedor.cs" />
     <Compile Include="DaoVenta.cs" />
+    <Compile Include="DaoVinculos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -230,9 +230,94 @@ namespace Vistas.Usuarios.administrador.Vendedores
             LimpiarFormulario();
         }
 
-        private void btn_SimularPago_Click(object sender, EventArgs e)
+        private void pnl_Arriba_Paint(object sender, PaintEventArgs e)
         {
-            frmToastPago.Mostrar(50000, "Matías Gimenez");
+
+        }
+
+        private void pnl_Derecha_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnl_Principal_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lbl_Usuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnl_Izquierdo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_Vendedores_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_Vendedor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lbl_Fecha_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_Dni_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Dni_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_Usuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_UsuarioVendedor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_Apellido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Apellido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_Nombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Nombre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_NuevoVendedor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_TocarFila_Click(object sender, EventArgs e)
+        {
+
         }
     }
     
