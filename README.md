@@ -41,15 +41,7 @@ El sistema está organizado en diferentes capas para separar las responsabilidad
 
 Esta organización permite mantener el código más ordenado y separar la interfaz, la lógica del negocio y el acceso a los datos.
 
-## 🚀 Cómo ejecutar el proyecto
 
-1. Clonar el repositorio.
-2. Abrir la solución del proyecto en Visual Studio.
-3. Configurar la conexión a SQL Server según el entorno local.
-4. Verificar que la base de datos y las tablas necesarias estén creadas.
-5. Compilar la solución y ejecutar la aplicación.
-
-> **Nota:** la configuración de la base de datos y la cadena de conexión deben adaptarse al entorno donde se ejecute el sistema.
 
 ## 🎯 Objetivo del desarrollo
 
