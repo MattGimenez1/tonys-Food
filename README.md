@@ -11,7 +11,7 @@ El sistema permite gestionar usuarios, vendedores, productos, ventas y stock des
 El sistema cuenta con un formulario de login que permite a los usuarios ingresar utilizando sus credenciales. Este acceso sirve como punto de entrada a la aplicación y permite diferenciar las opciones disponibles según el perfil del usuario.
 
 ![Inicio de sesión](<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4cc2d1dd-2aa4-48b2-b0b4-992fc07d4d99" />
-)
+
 
 ### 🏠 Menú principal del administrador
 
